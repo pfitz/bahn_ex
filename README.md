@@ -1,3 +1,6 @@
+[![Build
+Status](https://travis-ci.org/pfitz/bahn_ex?branch=master)](https://travis-ci.org/pfitz/bahn_ex)
+
 # bahn_ex
 
 An Elixir wrapper for the api of Deutsche Bahn Fahrplan API
