@@ -1,5 +1,5 @@
 [![Build
-Status](https://travis-ci.org/pfitz/bahn_ex?branch=master)](https://travis-ci.org/pfitz/bahn_ex)
+Status](https://travis-ci.org/pfitz/bahn_ex.svg?branch=master)](https://travis-ci.org/pfitz/bahn_ex)
 
 # bahn_ex
 
