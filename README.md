@@ -1,6 +1,6 @@
-# BahnEx
+# bahn_ex
 
-**TODO: Add description**
+An Elixir wrapper for the api of Deutsche Bahn Fahrplan API
 
 ## Installation
 
