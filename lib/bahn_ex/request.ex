@@ -32,7 +32,6 @@ defmodule BahnEx.Request do
     :: {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} | {:error, HTTPoison.Error.t}
   def journey_details(id) do
     url = @base_url <> "journeyDetails/#{id}"
-    IO.puts url
     HTTPoison.get(url, @header)
   end
 end
