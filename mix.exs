@@ -4,8 +4,8 @@ defmodule BahnEx.Mixfile do
   def project do
     [
       app: :bahn_ex,
-      version: "0.1.0",
-      elixir: "~> 1.4",
+      version: "1.0.0",
+      elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       deps: deps()
     ]
