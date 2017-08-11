@@ -28,4 +28,6 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
-import_config "bahn_ex_secret.exs"
+if File.regular?("config/bahn_ex_secret.exs") do
+ import_config "bahn_ex_secret.exs"
+end

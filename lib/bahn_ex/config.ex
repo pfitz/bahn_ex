@@ -1,5 +1,4 @@
 defmodule BahnEx.Config do
-
   @moduledoc """
   Config managament for the BahnEx API Wrapper.
   """
@@ -19,6 +18,11 @@ defmodule BahnEx.Config do
   @spec check_config_for_key(String.t) :: String.t | nil
   defp check_config_for_key(key) when is_binary(key),  do: key
   defp check_config_for_key(_) do
-    Application.get_env(:bahn_ex, :api_key)
+    case File.regular?("config/bahn_ex_secret.exs") do
+      true ->
+        Application.get_env(:bahn_ex, :api_key)
+      false ->
+        nil
+    end
   end
 end
