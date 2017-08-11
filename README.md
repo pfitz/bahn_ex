@@ -1,5 +1,4 @@
-# bahn_ex [![Build
-Status](https://travis-ci.org/pfitz/bahn_ex.svg?branch=master)](https://travis-ci.org/pfitz/bahn_ex) [![Hex.pm](http://img.shields.io/hexpm/v/bahn_ex.svg?style=flat)](https://hex.pm/packages/bahn_ex)
+# bahn_ex [![Build Status](https://travis-ci.org/pfitz/bahn_ex.svg?branch=master)](https://travis-ci.org/pfitz/bahn_ex) [![Hex.pm](http://img.shields.io/hexpm/v/bahn_ex.svg?style=flat)](https://hex.pm/packages/bahn_ex)
 
 An Elixir wrapper for the api of [Deutsche Bahn Fahrplan API](https://developer.deutschebahn.com/store/apis/info?name=Fahrplan&version=v1&provider=DBOpenData)
 
