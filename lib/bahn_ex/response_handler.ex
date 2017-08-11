@@ -4,7 +4,7 @@ defmodule BahnEx.ResponseHandler do
   structs
   """
 
-  alias BahnEx.{Location, Train}
+  alias BahnEx.{Location, Train, TrainLoc}
   require Logger
 
   @spec handle_location_response({:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
@@ -19,6 +19,16 @@ defmodule BahnEx.ResponseHandler do
     handle_response(response, [%Train{}])
   end
 
+  @spec handle_departure_board_response({:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
+    {:error, HTTPoison.Error.t}) :: list(BahnEx.Train.t)
+  def handle_departure_board_response(response) do
+    handle_response(response, [%Train{}])
+  end
+
+  def handle_journey_details_response(response) do
+    handle_response(response, [%TrainLoc{}])
+  end
+
   @spec handle_response({:ok | :error, HTTPoison.Response.t |
     HTTPoison.AsyncResponse.t | HTTPoison.Error.t}, list()) ::
     list() | nil
@@ -31,6 +41,11 @@ defmodule BahnEx.ResponseHandler do
     IO.puts "Error: Code: #{error["error"]["code"]} \n
       Description:#{error["error"]["description"]} \n
       Message:#{error["error"]["message"]}"
+    nil
+  end
+
+  defp handle_response({:ok, %HTTPoison.Response{status_code: 400, body: body}}, _) do
+    Logger.warn "400 - Invalid date/time specification. : " <> body
     nil
   end
 
