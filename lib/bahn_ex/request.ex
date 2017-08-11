@@ -13,4 +13,9 @@ defmodule BahnEx.Request do
     url = @base_url <> "location/#{location}?lang=de&format=json"
     HTTPoison.get(url, @header)
   end
+
+  def arrival_board(id, dateTime) do
+    url = @base_url <> "arrivalBoard/#{id}"
+    HTTPoison.get(url, @header, params: %{date: dateTime})
+  end
 end

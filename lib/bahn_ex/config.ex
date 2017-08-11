@@ -16,10 +16,9 @@ defmodule BahnEx.Config do
     check_config_for_key(key)
   end
 
-  @spec check_config_for_key(String.t) :: String.t
-  defp check_config_for_key(key) when is_binary(key) and byte_size(key) == 0 do
+  @spec check_config_for_key(String.t) :: String.t | nil
+  defp check_config_for_key(key) when is_binary(key),  do: key
+  defp check_config_for_key(_) do
     Application.get_env(:bahn_ex, :api_key)
   end
-
-  defp check_config_for_key(key), do: key
 end

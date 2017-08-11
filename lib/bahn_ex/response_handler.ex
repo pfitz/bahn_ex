@@ -4,7 +4,7 @@ defmodule BahnEx.ResponseHandler do
   structs
   """
 
-  alias BahnEx.Location
+  alias BahnEx.{Location, Train}
   require Logger
 
   @spec handle_location_response({:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
@@ -13,7 +13,14 @@ defmodule BahnEx.ResponseHandler do
     handle_response(response, [%Location{}])
   end
 
-  @spec handle_response({:ok | :error, HTTPoison.Response.t | HTTPoison.AsyncResponse.t | HTTPoison.Error.t}, list()) ::
+  @spec handle_arrival_board_response({:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
+    {:error, HTTPoison.Error.t}) :: list(BahnEx.Train.t)
+  def handle_arrival_board_response(response) do
+    handle_response(response, [%Train{}])
+  end
+
+  @spec handle_response({:ok | :error, HTTPoison.Response.t |
+    HTTPoison.AsyncResponse.t | HTTPoison.Error.t}, list()) ::
     list() | nil
   defp handle_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}, decode_as) do
       Poison.decode!(body, as: decode_as)
