@@ -1,6 +1,5 @@
 defmodule DateHelperTest do
-  use ExUnit.Case
-  #doctest BahnEx
+  use ExUnit.Case, async: true
 
   test "datehelper converts valid iso 8601 date string into DateTime" do
     assert %DateTime{} = BahnEx.DateHelpers.iso_8601_date_from_string("2017-08-20T19:00:00Z")

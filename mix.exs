@@ -28,6 +28,8 @@ defmodule BahnEx.Mixfile do
       {:poison, "~> 3.1"},
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+      {:ex_doc, ">= 0.0.0", only: :dev},
+      {:mock, "~> 0.2.0", only: :test},
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
     ]
@@ -35,7 +37,7 @@ defmodule BahnEx.Mixfile do
 
   defp description do
   """
-  An Elixir wrapper for the [Deutsche Bahn (DB) Fahrplan API](https://developer.deutschebahn.com/store/apis/info?name=Fahrplan&version=v1&provider=DBOpenData)
+  An Elixir wrapper for the Deutsche Bahn (DB) Fahrplan API.
   """
   end
 
