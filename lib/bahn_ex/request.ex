@@ -10,7 +10,7 @@ defmodule BahnEx.Request do
 
   @spec location(String.t) :: {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} | {:error, HTTPoison.Error.t}
   def location(location) do
-    url = @base_url <> "location/#{location}?lang=de&format=json"
+    url = @base_url <> "location/#{location}"
     HTTPoison.get(url, @header)
   end
 
