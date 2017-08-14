@@ -7,20 +7,26 @@ defmodule BahnEx.ResponseHandler do
   alias BahnEx.{Location, Train, TrainLoc}
   require Logger
 
-  @spec handle_location_response({:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
-    {:error, HTTPoison.Error.t}) :: list(BahnEx.Location.t | nil)
+  @spec handle_location_response(
+          {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
+          {:error, HTTPoison.Error.t}
+        ) :: list(BahnEx.Location.t | nil)
   def handle_location_response(response) do
     handle_response(response, [%Location{}])
   end
 
-  @spec handle_arrival_board_response({:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
-    {:error, HTTPoison.Error.t}) :: list(BahnEx.Train.t)
+  @spec handle_arrival_board_response(
+          {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
+          {:error, HTTPoison.Error.t}
+        ) :: list(BahnEx.Train.t)
   def handle_arrival_board_response(response) do
     handle_response(response, [%Train{}])
   end
 
-  @spec handle_departure_board_response({:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
-    {:error, HTTPoison.Error.t}) :: list(BahnEx.Train.t)
+  @spec handle_departure_board_response(
+          {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
+          {:error, HTTPoison.Error.t}
+        ) :: list(BahnEx.Train.t)
   def handle_departure_board_response(response) do
     handle_response(response, [%Train{}])
   end
@@ -29,11 +35,17 @@ defmodule BahnEx.ResponseHandler do
     handle_response(response, [%TrainLoc{}])
   end
 
-  @spec handle_response({:ok | :error, HTTPoison.Response.t |
-    HTTPoison.AsyncResponse.t | HTTPoison.Error.t}, list()) ::
-    list() | nil
+  @spec handle_response(
+          {
+            :ok | :error,
+            HTTPoison.Response.t |
+            HTTPoison.AsyncResponse.t | HTTPoison.Error.t
+          },
+          list()
+        ) ::
+          list() | nil
   defp handle_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}, decode_as) do
-      Poison.decode!(body, as: decode_as)
+    Poison.decode!(body, as: decode_as)
   end
 
   defp handle_response({:ok, %HTTPoison.Response{status_code: 401, body: body}}, _) do
@@ -64,7 +76,7 @@ defmodule BahnEx.ResponseHandler do
     nil
   end
 
-  defp handle_response({:error , %HTTPoison.Error{reason: :nxdomain}}, _) do
+  defp handle_response({:error, %HTTPoison.Error{reason: :nxdomain}}, _) do
     Logger.warn "Unknown domain"
     nil
   end

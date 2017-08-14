@@ -3,9 +3,17 @@ defmodule BahnEx.TrainLoc do
   Value struct for results of the journey details endpoint.
   """
 
-  @type t :: %__MODULE__{stopId: non_neg_integer(), stopName: String.t, lat: float, lon: float,
-  arrTime: %Time{} | nil, depTime: %Time{} | nil, train: String.t, type: String.t,
-  operator: String.t}
+  @type t :: %__MODULE__{
+               stopId: non_neg_integer(),
+               stopName: String.t,
+               lat: float,
+               lon: float,
+               arrTime: %Time{} | nil,
+               depTime: %Time{} | nil,
+               train: String.t,
+               type: String.t,
+               operator: String.t
+             }
   @derive [Poison.Encoder]
   defstruct [:stopId, :stopName, :lat, :lon, :arrTime, :depTime, :train, :type, :operator]
 

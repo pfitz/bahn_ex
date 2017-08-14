@@ -16,7 +16,7 @@ defmodule BahnEx.Config do
   end
 
   @spec check_config_for_key(String.t) :: String.t | nil
-  defp check_config_for_key(key) when is_binary(key),  do: key
+  defp check_config_for_key(key) when is_binary(key), do: key
   defp check_config_for_key(_) do
     case File.regular?("config/bahn_ex_secret.exs") do
       true ->

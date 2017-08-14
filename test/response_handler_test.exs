@@ -22,31 +22,31 @@ defmodule ResponseHandlerTest do
   """
 
   @arrival_json """
-    [
-      {
-        "name": "IC 2443",
-        "type": "IC",
-        "boardId": 8010085,
-        "stopId": 8010085,
-        "stopName": "Dresden Hbf",
-        "dateTime": "2017-08-19T14:36",
-        "origin": "Dortmund Hbf",
-        "track": "1",
-        "detailsId": "843048%2F290311%2F256180%2F152926%2F80%3fstation_evaId%3D8010085"
-      },
-      {
-        "name": "EC 378",
-        "type": "EC",
-        "boardId": 8010085,
-        "stopId": 8010085,
-        "stopName": "Dresden Hbf",
-        "dateTime": "2017-08-19T14:43",
-        "origin": "Praha hl.n.",
-        "track": "17",
-        "detailsId": "970731%2F341609%2F520018%2F63568%2F80%3fstation_evaId%3D8010085"
-      }
-    ]
-    """
+  [
+    {
+      "name": "IC 2443",
+      "type": "IC",
+      "boardId": 8010085,
+      "stopId": 8010085,
+      "stopName": "Dresden Hbf",
+      "dateTime": "2017-08-19T14:36",
+      "origin": "Dortmund Hbf",
+      "track": "1",
+      "detailsId": "843048%2F290311%2F256180%2F152926%2F80%3fstation_evaId%3D8010085"
+    },
+    {
+      "name": "EC 378",
+      "type": "EC",
+      "boardId": 8010085,
+      "stopId": 8010085,
+      "stopName": "Dresden Hbf",
+      "dateTime": "2017-08-19T14:43",
+      "origin": "Praha hl.n.",
+      "track": "17",
+      "detailsId": "970731%2F341609%2F520018%2F63568%2F80%3fstation_evaId%3D8010085"
+    }
+  ]
+  """
 
   test "404 - Response returns nil" do
     mockresponse = {:ok, %Response{status_code: 404, body: "body"}}
@@ -64,7 +64,7 @@ defmodule ResponseHandlerTest do
   end
 
   test "unknown domain - returns nil" do
-    mockresponse = {:error , %HTTPoison.Error{reason: :nxdomain}}
+    mockresponse = {:error, %HTTPoison.Error{reason: :nxdomain}}
     assert nil == ResponseHandler.handle_location_response(mockresponse)
   end
 

@@ -13,9 +13,9 @@ defmodule BahnEx.DepartureBoard do
 
   Returns: a list of `%BahnEx.Train{}` for the given station and time.
   """
-  @spec get_departures(non_neg_integer() | BahnEx.Location.t , Calendar.datetime | String.t) :: list(BahnEx.Train.t)
+  @spec get_departures(non_neg_integer() | BahnEx.Location.t, Calendar.datetime | String.t) :: list(BahnEx.Train.t)
   def get_departures(station_id, iso_8601_date_time) when is_integer(station_id)
-      and is_binary(iso_8601_date_time) do
+                                                          and is_binary(iso_8601_date_time) do
 
     date = DateHelpers.iso_8601_date_from_string(iso_8601_date_time)
     station_id
@@ -23,7 +23,7 @@ defmodule BahnEx.DepartureBoard do
   end
 
   def get_departures(%BahnEx.Location{} = location, iso_8601_date_time)
-    when is_binary(iso_8601_date_time) do
+      when is_binary(iso_8601_date_time) do
 
     date = DateHelpers.iso_8601_date_from_string(iso_8601_date_time)
     location
